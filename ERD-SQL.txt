@@ -1,0 +1,45 @@
+CREATE TABLE tracking (
+  trackingno INT AUTO_INCREMENT,
+  Doc_ID int null,
+  daterecived DATETIME NULL,
+  status VARCHAR(45) NULL,
+  datereliesd DATETIME NULL,
+  comment VARCHAR(45) ,
+  PRIMARY KEY (trackingno),
+  foreign key (Doc_Id) references document(Doc_Id)
+  );
+
+CREATE TABLE document (
+  Doc_Id INT AUTO_INCREMENT,
+  Doc_type VARCHAR(45) NULL,
+  Doc_subj VARCHAR(45) NULL,
+  documentcol VARCHAR(45) NULL,
+  dateField DATETIME NULL,
+  UNIQUE INDEX Doc_Id_UNIQUE (Doc_Id ASC) VISIBLE,
+  PRIMARY KEY (Doc_Id));
+
+CREATE TABLE employee (
+  employee_Id INT AUTO_INCREMENT ,
+  Doc_ID int null ,
+  employee_name VARCHAR(45) NULL,
+  employee_department VARCHAR(45) NULL,
+  dateof_opening DATETIME NULL,
+  PRIMARY KEY (employee_Id),
+  foreign key (Doc_Id) references document(Doc_Id)
+  );
+
+CREATE TABLE draft (
+  draft_no INT AUTO_INCREMENT ,
+  Doc_ID int null ,
+  PRIMARY KEY (draft_no),
+  foreign key (Doc_Id) references document(Doc_Id)
+  );
+
+CREATE TABLE supplier (
+  supplier_Id INT AUTO_INCREMENT ,
+  Doc_ID int null ,
+  supplier_name VARCHAR(45) NULL,
+  employee_address VARCHAR(45) NULL,
+  PRIMARY KEY (supplier_Id),
+  foreign key (Doc_Id) references document(Doc_Id)
+  );
